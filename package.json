@@ -6,9 +6,13 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
+    "bootstrap": "^4.4.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-scripts": "3.3.0"
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.3.0",
+    "styled-components": "^5.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -17,7 +21,52 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "env": {
+      "browser": true,
+      "jest": true,
+      "es6": true
+    },
+    "plugins": [
+      "import"
+    ],
+    "extends": [
+      "react-app",
+      "plugin:prettier/recommended"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2018,
+      "sourceType": "module"
+    },
+    "rules": {
+      "no-console": "warn",
+      "no-eval": "error",
+      "import/first": "error"
+    }
+  },
+  "prettier": {
+    "printWidth": 90,
+    "tabWidth": 2,
+    "useTabs": false,
+    "bracketSpacing": false,
+    "trailingComma": "es5",
+    "singleQuote": false,
+    "semi": true,
+    "jsxBracketSameLine": true
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.+(js|jsx)": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.+(json|css|md)": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "browserslist": {
     "production": [
@@ -30,5 +79,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-node": "^4.0.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "husky": "^4.2.1",
+    "lint-staged": "^10.0.3",
+    "prettier": "^1.19.1"
   }
 }
